@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scerija's Adventures</title>
+    <style>
+        body {
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #1a0f1f; /* Initial background color (dark purple) */
+            transition: background-color 2s ease-in-out; /* Smooth transition for background color */
+        }
+        header {
+            background-color: #e63946;
+            padding: 20px;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 10px;
+        }
+        nav a {
+            color: #f4a261;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .message {
+            font-size: 18px;
+            color: #f4a261;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .featured-photos {
+            margin-top: 30px;
+        }
+        .featured-photos img {
+            width: 250px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Heart animation */
+        .heart {
+            position: fixed;
+            font-size: 30px;
+            color: #ff69b4;
+            opacity: 1;
+            animation: floatUp 2s linear infinite;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        /* Styling for affection button */
+        .affection-button {
+            display: inline-block;
+            font-size: 22px;
+            padding: 15px 30px;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .affection-button:hover {
+            background-color: #e63946;
+            transform: scale(1.1);
+        }
+
+        /* Style for the heart message */
+        .heart-message {
+            position: fixed;
+            font-size: 30px;
+            color: #ff69b4;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 9999;
+            font-family: 'Arial', sans-serif;
+            white-space: nowrap;
+            animation: showMessage 1s forwards;
+        }
+
+        @keyframes showMessage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Smaller heart design */
+        .small-heart {
+            font-size: 20px;
+            color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Scerija's Adventures</h1>
+        <p>hey, yes you cutie looking at this, i thought it would be a cute idea to make us a little digital photobook so we can always look back at our trips, and how we evolved, and last and best to save our memories, it's still updating so let me know if you have any of your own ideas, i hope you love it <3, ( i spend blood tears and time making this pls love it )</p>
+        <nav>
+            <ul>
+                <li><a href="trip1.html">Trip 1</a></li>
+                <li><a href="trip2.html">Trip 2</a></li>
+                <li><a href="trip3.html">Trip 3</a></li>
+                <li><a href="trip4.html">... Incoming</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="featured-photos">
+            <img src="photo6.jpeg" alt="Photo 6">
+            <img src="photo7.jpeg" alt="Photo 7">
+            <img src="mainpicture1.jpeg" alt="Main Picture 1">
+            <img src="mainpicture2.jpeg" alt="Main Picture 2">
+            <img src="mainpicture3.jpeg" alt="Main Picture 3">
+        </div>
+        <br>
+        <!-- Change the button text and functionality -->
+        <a href="javascript:void(0);" class="affection-button" onclick="createHearts()">Click on me for affection</a>
+    </main>
+
+    <script>
+        // Function to change background color
+        function changeBackgroundColor() {
+            let colors = ['#1a0f1f', '#003366', '#660066']; // Dark Purple, Dark Blue, Dark Red
+            let currentColor = document.body.style.backgroundColor;
+            let nextColor = (currentColor === 'rgb(26, 15, 31)') ? colors[1] : (currentColor === 'rgb(0, 51, 102)' ? colors[2] : colors[0]);
+            document.body.style.backgroundColor = nextColor;
+        }
+
+        // Change background color every 5 seconds
+        setInterval(changeBackgroundColor, 5000);
+        
+        function createHearts() {
+            // First, show the "Volim Te" heart message
+            const heartMessage = "Volim Te ❤️";
+
+            // Display the "Volim Te" heart message in the center of the screen
+            let message = document.createElement('div');
+            message.classList.add('heart-message');
+            message.innerHTML = heartMessage;
+            document.body.appendChild(message);
+
+            // Generate hearts floating in the background
+            for (let i = 0; i < 100; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+
+            // Add some smaller hearts to form the message like "Volim Te ❤️"
+            setTimeout(() => {
+                const smallHeartMessage = "Volim Te ❤️";
+                let smallHeartDiv = document.createElement('div');
+                smallHeartDiv.classList.add('heart-message');
+                smallHeartDiv.style.fontSize = '18px';
+                smallHeartDiv.innerHTML = smallHeartMessage.split("").map(char => {
+                    if (char === '❤️') {
+                        return `<span class="small-heart">❤️</span>`;
+                    } else {
+                        return char;
+                    }
+                }).join('');
+                document.body.appendChild(smallHeartDiv);
+            }, 2000); // Wait for a moment before adding this message
+        }
+    </script>
+</body>
+</html>
