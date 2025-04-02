@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip 1 - Braunschweig</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-image: url('background-pattern.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        h1, h2 {
+            color: #f4a261;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        img {
+            width: 280px;
+            margin: 15px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(244, 162, 97, 0.8);
+        }
+
+        video {
+            width: 480px;
+            margin: 15px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        video:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            position: relative;
+            color: #f4a261;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: rgba(244, 162, 97, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        a:hover {
+            background-color: #e63946;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: floatUp 1s ease-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-50px); opacity: 0; }
+        }
+
+        /* Spider Animation */
+        .spider {
+            position: absolute;
+            animation: moveSpider 10s linear infinite;
+            width: 50px; /* Adjust to your spider image size */
+            height: 50px;
+            background-image: url('spider.png'); /* Replace with your spider image */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        @keyframes moveSpider {
+            0% {
+                left: -60px;
+                top: 0;
+            }
+            25% {
+                left: 10%;
+                top: 20%;
+            }
+            50% {
+                left: 50%;
+                top: 50%;
+            }
+            75% {
+                left: 80%;
+                top: 30%;
+            }
+            100% {
+                left: 100%;
+                top: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trip 1 - Braunschweig</h1>
+
+        <h2>Photos</h2>
+        <div>
+            <img src="photo1.jpeg" alt="Photo 1">
+            <img src="photo2.jpeg" alt="Photo 2">
+            <img src="photo3.jpeg" alt="Photo 3">
+            <img src="photo4.jpeg" alt="Photo 4">
+        </div>
+
+        <h2>Videos</h2>
+        <div>
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <a href="index1.html" onclick="showHearts(event)">← Back to Home</a>
+    </div>
+
+    <!-- Spider crawling across the screen -->
+    <div class="spider"></div>
+
+    <script>
+        function showHearts(event) {
+            event.preventDefault();
+            let button = event.target;
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * 40}px`;
+                heart.style.top = `${-Math.random() * 20}px`;
+                button.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            }
+            setTimeout(() => { window.location.href = button.href; }, 1000);
+        }
+    </script>
+</body>
+</html>
