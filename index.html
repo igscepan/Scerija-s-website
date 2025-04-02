@@ -6,14 +6,13 @@
     <title>Scerija's Adventures</title>
     <style>
         body {
+            background-color: #1a1a2e;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-color: #1a0f1f; /* Initial background color (dark purple) */
-            transition: background-color 2s ease-in-out; /* Smooth transition for background color */
         }
         header {
             background-color: #e63946;
@@ -124,9 +123,34 @@
             font-size: 20px;
             color: #ff69b4;
         }
+
+        /* Background animation */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background-pattern.png'); /* Optional: Add a background image */
+            background-size: cover;
+            opacity: 0.1;
+            animation: animateBackground 60s linear infinite;
+        }
+        @keyframes animateBackground {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(200px, 200px);
+            }
+        }
+
     </style>
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="background-animation"></div>
+    
     <header>
         <h1>Scerija's Adventures</h1>
         <p>hey, yes you cutie looking at this, i thought it would be a cute idea to make us a little digital photobook so we can always look back at our trips, and how we evolved, and last and best to save our memories, it's still updating so let me know if you have any of your own ideas, i hope you love it <3, ( i spend blood tears and time making this pls love it )</p>
@@ -152,19 +176,8 @@
         <!-- Change the button text and functionality -->
         <a href="javascript:void(0);" class="affection-button" onclick="createHearts()">Click on me for affection</a>
     </main>
-
+    
     <script>
-        // Function to change background color
-        function changeBackgroundColor() {
-            let colors = ['#1a0f1f', '#003366', '#660066']; // Dark Purple, Dark Blue, Dark Red
-            let currentColor = document.body.style.backgroundColor;
-            let nextColor = (currentColor === 'rgb(26, 15, 31)') ? colors[1] : (currentColor === 'rgb(0, 51, 102)' ? colors[2] : colors[0]);
-            document.body.style.backgroundColor = nextColor;
-        }
-
-        // Change background color every 5 seconds
-        setInterval(changeBackgroundColor, 5000);
-        
         function createHearts() {
             // First, show the "Volim Te" heart message
             const heartMessage = "Volim Te ❤️";
