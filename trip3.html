@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip 3 - Berlin 2.0</title>
+    <style>
+        body {
+            background-color: #8b0000;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-image: url('background-texture.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1, h2 {
+            color: #ffcccb;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-family: 'Georgia', serif;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        img {
+            width: 250px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 204, 203, 0.8);
+        }
+
+        video {
+            width: 400px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        video:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            position: relative;
+            color: #ffcccb;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 204, 203, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        a:hover {
+            background-color: #e63946;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: floatUp 1.5s ease-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-60px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trip 3 - Berlin 2.0</h1>
+
+        <h2>Photos</h2>
+        <div>
+            <img src="photo14.jpeg" alt="Photo 14">
+            <img src="photo15.jpeg" alt="Photo 15">
+            <img src="photo16.jpeg" alt="Photo 16">
+            <img src="photo17.jpeg" alt="Photo 17">
+            <img src="photo18.jpeg" alt="Photo 18">
+            <img src="photo19.jpeg" alt="Photo 19">
+            <img src="photo20.jpeg" alt="Photo 20">
+            <img src="photo21.jpeg" alt="Photo 21">
+            <img src="photo22.jpeg" alt="Photo 22">
+            <img src="photo23.jpeg" alt="Photo 23">
+            <img src="photo24.jpeg" alt="Photo 24">
+            <img src="photo25.jpeg" alt="Photo 25">
+            <img src="photo26.jpeg" alt="Photo 26">
+            <img src="photo27.jpeg" alt="Photo 27">
+            <img src="photo28.jpeg" alt="Photo 28">
+        </div>
+
+        <h2>Videos</h2>
+        <div>
+            <video controls>
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video6.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video7.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <a href="index1.html" onclick="showHearts(event)">← Back to Home</a>
+    </div>
+
+    <script>
+        function showHearts(event) {
+            event.preventDefault();
+            let button = event.target;
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * 100}px`;
+                heart.style.top = `${-Math.random() * 50}px`;
+                button.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }
+            setTimeout(() => { window.location.href = button.href; }, 1500);
+        }
+    </script>
+</body>
+</html>
